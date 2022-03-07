@@ -1,0 +1,57 @@
+name: Build And Publish
+on:
+  push:
+    branches:
+      - main
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ '10', '12', '14', '16' ]
+    name: Testing on node ${{ matrix.node }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Initial node enviroment
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm install
+      - run: npm run test
+  build-and-publish:
+    needs:
+      - testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Initial node enviroment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          registry-url: https://registry.npmjs.org/
+      - run: npm install
+      - run: npm run test
+      - name: Publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH }}
+        run: npm publish
+  create-tag:
+    needs:
+      - build-and-publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Read package.json
+        uses: tyankatsu0105/read-package-version-actions@v1
+        id: package-version
+      - name: Create Release for Tag
+        id: release_tag
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+        with:
+          tag_name: v${{ steps.package-version.outputs.version }}
+          release_name: Release v${{ steps.package-version.outputs.version }}
+          prerelease: false
+          body: 'Click [change log](https://github.com/lxj694263025/ci-cd-test/blob/main/CHANGE.log) to see more.'
