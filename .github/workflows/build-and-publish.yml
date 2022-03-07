@@ -30,13 +30,12 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
-          registry-url: https://registry.npmjs.org/
       - run: npm install
       - run: npm run test
       - name: Publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH }}
-        run: npm publish
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_PUBLISH }}
   create-tag:
     needs:
       - build-and-publish
