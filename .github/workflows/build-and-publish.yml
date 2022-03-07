@@ -49,4 +49,4 @@ jobs:
           tag_name: v${{ steps.package-version.outputs.version }}
           release_name: Release v${{ steps.package-version.outputs.version }}
           prerelease: false
-          body: 'Click [change log](https://github.com/lxj694263025/ci-cd-test/blob/main/CHANGE.log) to see more.'
+          body: 'Click [change log](https://github.com/lxj694263025/ci-cd-test/blob/main/CHANGE.md) to see more.'
