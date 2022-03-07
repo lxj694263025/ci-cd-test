@@ -1,0 +1,22 @@
+{
+  "name": "@gentleknt/ci-cd-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lxj694263025/ci-cd-test.git"
+  },
+  "author": "Juner",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lxj694263025/ci-cd-test/issues"
+  },
+  "homepage": "https://github.com/lxj694263025/ci-cd-test",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
+}
