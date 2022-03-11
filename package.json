@@ -1,6 +1,6 @@
 {
   "name": "@gentleknt/ci-cd-test",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "private": false,
@@ -20,5 +20,8 @@
   "homepage": "https://github.com/lxj694263025/ci-cd-test",
   "devDependencies": {
     "jest": "^27.5.1"
+  },
+  "engines": {
+    "node": ">= 8.0.0",
   }
 }
