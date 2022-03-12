@@ -10,7 +10,7 @@
 - [背景](#背景)
 - [无用的占位信息](#无用的占位信息)
     - [Hello](#hello)
-    - [Double Words](#double words)
+    - [Double Words](#double-words)
 - [如何贡献](#如何贡献)
 - [使用许可](#使用许可)
 
