@@ -35,7 +35,7 @@ jobs:
       - name: Publish
         uses: JS-DevTools/npm-publish@v1
         with:
-          token: ${{ secrets.NPM_PUBLISH }}
+          token: ${{ secrets.NPM_ACCESS_TOKEN }}
           access: public
       - name: Read package.json
         uses: tyankatsu0105/read-package-version-actions@v1
